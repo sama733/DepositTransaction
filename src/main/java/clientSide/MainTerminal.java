@@ -32,7 +32,7 @@ public class MainTerminal {
     //--------------------------------------
     public Document readXmlFile() {
         //read xml file
-        File xmlFile = new File("terminal1.xml");
+        File xmlFile = new File("terminal.xml");
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = null;
         try {

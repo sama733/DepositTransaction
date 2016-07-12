@@ -23,7 +23,7 @@ public class MainServer {
         MainServer mainServer = new MainServer();
         MainJSonParser mainJSonParser = new MainJSonParser();
         mainServer.Config();
-        TransactionsValidator transactionsValidator = new TransactionsValidator();
+        TransactionsValidation transactionsValidator = new TransactionsValidation();
 
         try {
             fileHandler = new FileHandler("src/main/" + mainServer.getOutLog(), true);
@@ -43,7 +43,7 @@ public class MainServer {
         List<Response> responses = transactionsValidator.findDeposit(transactions, deposits);
         mainServer.sendResponse(socket, responses);
 
-        System.out.println("transactions:" + transactions.toString());
+//        System.out.println("transactions:" + transactions.toString());
         System.out.println("deposits:" + deposits);
         System.out.println("responses:" + responses);
 

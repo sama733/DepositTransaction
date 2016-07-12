@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransactionsValidator {
+public class TransactionsValidation {
 
 
     public List<Response> findDeposit(List<Transaction> transactions, List<Deposit> deposits) {

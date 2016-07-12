@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<terminal id="100" type="ATM">
-    <server ip="127.0.0.1" port="8080"/>
-    <outLog path="term100.log"/>
-    <transactions>
-
-        <transaction id="5" type="deposit" amount="1010" deposit="35527439"/>
-    </transactions>
-</terminal>
