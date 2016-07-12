@@ -21,6 +21,7 @@ public class MainClient implements Serializable {
     MainTerminal mainTerminal = new MainTerminal();
     List<Transaction> clientTransactions = mainTerminal.setInformations(mainTerminal.readXmlFile());
 
+    //---------------------------------------------
     public static void main(String[] args) {
         MainClient mainClient = new MainClient();
         Socket mainSocket = mainClient.getConnection();
@@ -85,10 +86,10 @@ public class MainClient implements Serializable {
             // System.out.println("MainClient.getResponse, is Success.");
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("MainClient.getResponse, is Fale.");
+            System.out.println("MainClient.getResponse, is Falid.");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            System.out.println("MainClient.getResponse, is Fale.");
+            System.out.println("MainClient.getResponse, is Falid.");
         }
     }
 }

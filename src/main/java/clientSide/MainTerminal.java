@@ -23,17 +23,16 @@ import java.util.List;
 
 public class MainTerminal {
 
-
     private int terminalId;
     private String terminalType;
     private String serverIp;
     private int serverPort;
     private String outLogPath;
 
-
+    //--------------------------------------
     public Document readXmlFile() {
         //read xml file
-        File xmlFile = new File("terminal.xml");
+        File xmlFile = new File("terminal1.xml");
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = null;
         try {
@@ -52,7 +51,7 @@ public class MainTerminal {
         return null;
     }
 
-
+    //-------------------------------------------
     //set information to fields and get transactions
     public List<Transaction> setInformations(Document document) {
 
@@ -98,6 +97,7 @@ public class MainTerminal {
 
         Element finalResponse = new Element("response");
         org.jdom.Document doc = new org.jdom.Document(finalResponse);
+
         for (Response response : responses) {
 
             Element result = new Element("result");
@@ -108,8 +108,6 @@ public class MainTerminal {
 
             doc.getRootElement().addContent(result);
         }
-
-
         XMLOutputter xmlOutput = new XMLOutputter();
         xmlOutput.setFormat(Format.getPrettyFormat());
         try {

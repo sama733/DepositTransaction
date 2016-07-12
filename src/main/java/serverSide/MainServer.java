@@ -12,11 +12,13 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 public class MainServer {
+
     static FileHandler fileHandler = null;
     static Logger logger = Logger.getLogger(MainServer.class.getName());
     private static String outLog;
     private static int port;
 
+    //---------------------------------------------------
     public static void main(String[] args) {
         MainServer mainServer = new MainServer();
         MainJSonParser mainJSonParser = new MainJSonParser();
@@ -133,6 +135,5 @@ public class MainServer {
         jSonParser.jSonReader();
         jSonParser.getOutLogPathAndPort();
     }
-
 
 }
