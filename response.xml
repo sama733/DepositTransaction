@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+  <result>
+    <id>1</id>
+    <responseType>SUCCESS</responseType>
+    <newBalance>4000</newBalance>
+    <description>Amaliat movafaghiat amiz bod!</description>
+  </result>
+  <result>
+    <id>2</id>
+    <responseType>FAILD</responseType>
+    <newBalance>0</newBalance>
+    <description>mojodi kafi nis!</description>
+  </result>
+</response>
+

@@ -1,0 +1,8 @@
+Jul 12, 2016 11:32:19 AM serverSide.MainServer getConnection
+INFO: serverSocket create
+Jul 12, 2016 11:32:21 AM serverSide.MainServer getConnection
+INFO: serversSocket is listening to port:8080
+Jul 12, 2016 11:32:21 AM serverSide.MainServer getRequest
+INFO: get request from client
+Jul 12, 2016 11:32:21 AM serverSide.MainServer sendResponse
+INFO: send response to client
