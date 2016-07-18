@@ -1,24 +1,32 @@
-Jul 12, 2016 3:58:42 PM serverSide.MainServer getConnection
+Jul 17, 2016 4:32:06 PM serverSide.MainServer getConnection
 INFO: serverSocket create
-Jul 12, 2016 3:58:48 PM serverSide.MainServer getConnection
+Jul 17, 2016 4:32:13 PM serverSide.MainServer getConnection
 INFO: serversSocket is listening to port:8080
-Jul 12, 2016 3:58:48 PM serverSide.MainServer getRequest
+Jul 17, 2016 4:32:13 PM serverSide.MainServer getRequest
 INFO: get request from client
-Jul 12, 2016 3:58:48 PM serverSide.MainServer sendResponse
+Jul 17, 2016 4:32:13 PM serverSide.MainServer sendResponse
 INFO: send response to client
-Jul 12, 2016 3:59:06 PM serverSide.MainServer getConnection
+Jul 17, 2016 4:35:26 PM serverSide.MainServer getConnection
 INFO: serverSocket create
-Jul 12, 2016 3:59:08 PM serverSide.MainServer getConnection
+Jul 17, 2016 4:35:30 PM serverSide.MainServer getConnection
 INFO: serversSocket is listening to port:8080
-Jul 12, 2016 3:59:08 PM serverSide.MainServer getRequest
+Jul 17, 2016 4:35:30 PM serverSide.MainServer getRequest
 INFO: get request from client
-Jul 12, 2016 3:59:08 PM serverSide.MainServer sendResponse
+Jul 17, 2016 4:35:30 PM serverSide.MainServer sendResponse
 INFO: send response to client
-Jul 12, 2016 4:00:17 PM serverSide.MainServer getConnection
+Jul 17, 2016 4:38:37 PM serverSide.MainServer getConnection
 INFO: serverSocket create
-Jul 12, 2016 4:00:19 PM serverSide.MainServer getConnection
+Jul 17, 2016 4:38:43 PM serverSide.MainServer getConnection
 INFO: serversSocket is listening to port:8080
-Jul 12, 2016 4:00:19 PM serverSide.MainServer getRequest
+Jul 17, 2016 4:38:43 PM serverSide.MainServer getRequest
 INFO: get request from client
-Jul 12, 2016 4:00:19 PM serverSide.MainServer sendResponse
+Jul 17, 2016 4:38:43 PM serverSide.MainServer sendResponse
+INFO: send response to client
+Jul 18, 2016 8:11:41 AM serverSide.MainServer getConnection
+INFO: serverSocket create
+Jul 18, 2016 8:11:46 AM serverSide.MainServer getConnection
+INFO: serversSocket is listening to port:8080
+Jul 18, 2016 8:11:46 AM serverSide.MainServer getRequest
+INFO: get request from client
+Jul 18, 2016 8:11:46 AM serverSide.MainServer sendResponse
 INFO: send response to client

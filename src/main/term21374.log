@@ -1,12 +1,16 @@
-Jul 12, 2016 3:58:48 PM clientSide.MainClient sendRequest
+Jul 17, 2016 4:32:13 PM clientSide.MainClient sendRequest
 INFO: send request to server ...
-Jul 12, 2016 3:58:48 PM clientSide.MainClient getResponse
+Jul 17, 2016 4:32:13 PM clientSide.MainClient getResponse
 INFO: get response from server
-Jul 12, 2016 3:59:08 PM clientSide.MainClient sendRequest
+Jul 17, 2016 4:35:30 PM clientSide.MainClient sendRequest
 INFO: send request to server ...
-Jul 12, 2016 3:59:08 PM clientSide.MainClient getResponse
+Jul 17, 2016 4:35:30 PM clientSide.MainClient getResponse
 INFO: get response from server
-Jul 12, 2016 4:00:19 PM clientSide.MainClient sendRequest
+Jul 17, 2016 4:38:43 PM clientSide.MainClient sendRequest
 INFO: send request to server ...
-Jul 12, 2016 4:00:19 PM clientSide.MainClient getResponse
+Jul 17, 2016 4:38:43 PM clientSide.MainClient getResponse
+INFO: get response from server
+Jul 18, 2016 8:11:46 AM clientSide.MainClient sendRequest
+INFO: send request to server ...
+Jul 18, 2016 8:11:46 AM clientSide.MainClient getResponse
 INFO: get response from server

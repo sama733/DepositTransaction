@@ -42,11 +42,11 @@ public class Deposit {
         this.initialBalance = initialBalance;
     }
 
-    public void doDepoit(BigDecimal amount) {
+    public  void doDepoit(BigDecimal amount) {
         setInitialBalance(amount.add(getInitialBalance()));
     }
 
-    public void doWithdrawl(BigDecimal amount) {
+    public  void doWithdrawl(BigDecimal amount) {
         setInitialBalance(getInitialBalance().subtract(amount));
     }
 

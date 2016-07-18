@@ -48,11 +48,11 @@ public class MainClient implements Serializable {
         try {
             client = new Socket(mainTerminal.getServerIp(), mainTerminal.getServerPort());
             logger.info("client connected to server on port :" + client.getLocalPort());
-            //System.out.println("MainClient.getConnection, is Success.");
+            //System.out.println("MainClient.getConnection, is successful.");
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("MainClient.getConnection, is Faild.");
-            logger.info("Connecting to server faild");
+            System.out.println("MainClient.getConnection, is Failed.");
+            logger.info("Connecting to server failed");
         }
         return client;
     }
@@ -64,11 +64,11 @@ public class MainClient implements Serializable {
             dataOutputToServer.writeObject(clientTransactions);
             dataOutputToServer.flush();
             //dataOutputToServer.close();
-            System.out.println("MainClient.SendRequest, is Success.");
+            System.out.println("MainClient.SendRequest, is successful.");
             logger.info("send request to server ...");
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("MainClient.SendRequest, is Faild.");
+            System.out.println("MainClient.SendRequest, is Failed.");
         }
     }
 
@@ -83,13 +83,13 @@ public class MainClient implements Serializable {
             logger.info("get response from server");
             mainTerminal.seveToXml(clientResponse);
             //objectInputStreamFromServer.close();
-            // System.out.println("MainClient.getResponse, is Success.");
+            // System.out.println("MainClient.getResponse, is successful.");
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("MainClient.getResponse, is Falid.");
+            System.out.println("MainClient.getResponse, is Falied.");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            System.out.println("MainClient.getResponse, is Falid.");
+            System.out.println("MainClient.getResponse, is Falied.");
         }
     }
 }

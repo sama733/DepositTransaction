@@ -11,7 +11,7 @@
       "customer": "Reza Rezayi",
       "id": "35527439",
       "initialBalance": "0",
-      "upperBound": "0"
+      "upperBound": "2000"
     }
   ],
   "outLog": "server.out"
