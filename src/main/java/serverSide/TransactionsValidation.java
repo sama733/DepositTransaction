@@ -20,28 +20,30 @@ public class TransactionsValidation {
         return responses;
     }
 
-    public synchronized Response doTransaction(Transaction transaction, Deposit deposit) {
-        Response response = null;
-        if (transaction.getType().equals("deposit")) {
-            BigDecimal sumDeposit = (deposit.getInitialBalance().add(transaction.getAmount()));
-            if (sumDeposit.compareTo(deposit.getUpperBound()) < 0) {
-                deposit.doDepoit(transaction.getAmount());
-                response = new Response(transaction.getId(), ResponseType.SUCCESS, deposit.getInitialBalance(), "Amaliat movafaghiat amiz bod!");
-            } else {
-                response = new Response(transaction.getId(), ResponseType.FAILD, deposit.getInitialBalance(), "bishtar az hade mojaz!");
-                System.out.println("bishtar az hade mojaz");
+    public Response doTransaction(Transaction transaction, Deposit deposit) {
+        synchronized (deposit) {
+            Response response = null;
+            if (transaction.getType().equals("deposit")) {
+                BigDecimal sumDeposit = (deposit.getInitialBalance().add(transaction.getAmount()));
+                if (sumDeposit.compareTo(deposit.getUpperBound()) < 0) {
+                    deposit.doDepoit(transaction.getAmount());
+                    response = new Response(transaction.getId(), ResponseType.SUCCESS, deposit.getInitialBalance(), "Amaliat movafaghiat amiz bod!");
+                } else {
+                    response = new Response(transaction.getId(), ResponseType.FAILD, deposit.getInitialBalance(), "bishtar az hade mojaz!");
+                    System.out.println("bishtar az hade mojaz");
+                }
+            } else if (transaction.getType().equals("withdraw")) {
+                BigDecimal munDeposit = (deposit.getInitialBalance().subtract(transaction.getAmount()));
+                if (munDeposit.compareTo(deposit.getUpperBound()) < 0) {
+                    deposit.doWithdrawl(transaction.getAmount());
+                    response = new Response(transaction.getId(), ResponseType.SUCCESS, deposit.getInitialBalance(), "Amaliat movafaghiat amiz bod!");
+                } else {
+                    response = new Response(transaction.getId(), ResponseType.FAILD, deposit.getInitialBalance(), "mojodi kafi nis!");
+                    System.out.println("mojodi kafi nis");
+                }
             }
-        } else if (transaction.getType().equals("withdraw")) {
-            BigDecimal munDeposit = (deposit.getInitialBalance().subtract(transaction.getAmount()));
-            if (munDeposit.compareTo(deposit.getUpperBound()) < 0) {
-                deposit.doWithdrawl(transaction.getAmount());
-                response = new Response(transaction.getId(), ResponseType.SUCCESS, deposit.getInitialBalance(), "Amaliat movafaghiat amiz bod!");
-            } else {
-                response = new Response(transaction.getId(), ResponseType.FAILD, deposit.getInitialBalance(), "mojodi kafi nis!");
-                System.out.println("mojodi kafi nis");
-            }
+            return response;
         }
-        return response;
 
     }
 }

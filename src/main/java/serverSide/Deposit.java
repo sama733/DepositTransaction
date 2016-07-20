@@ -43,7 +43,9 @@ public class Deposit {
     }
 
     public  void doDepoit(BigDecimal amount) {
-        setInitialBalance(amount.add(getInitialBalance()));
+        BigDecimal previousBalance = getInitialBalance();
+//        Thread.yield();
+        setInitialBalance(amount.add(previousBalance));
     }
 
     public  void doWithdrawl(BigDecimal amount) {
