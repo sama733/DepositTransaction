@@ -18,8 +18,10 @@ public class MainJSonParser {
 
     private final static String JSON_PATH = "core.json";
     public static JSONObject jsonObject;
-    public static List<Deposit> deposits = new ArrayList();
-    public static String outLogPath;
+    private List<Deposit> deposits = new ArrayList();
+    private String outLogPath;
+
+
 
     //parse kardane json
     public JSONObject jSonReader() {
@@ -44,7 +46,6 @@ public class MainJSonParser {
 
     //set Deposit Values
     public List<Deposit> getDeposits() {
-
         JSONArray depositList = (JSONArray) jsonObject.get("deposits");
         Iterator iterateDeposits = depositList.iterator();
         while (iterateDeposits.hasNext()) {
@@ -59,12 +60,13 @@ public class MainJSonParser {
         return deposits;
     }
 
-    public void getOutLogPathAndPort() {
-        MainServer mainServer = new MainServer();
+    public Long getPort() {
+        return (Long) jsonObject.get("port");
+    }
+
+    public String getOutLogPath() {
         outLogPath = (String) jsonObject.get("outLog");
-        mainServer.setOutLog(outLogPath);
-        Long port = (Long) jsonObject.get("port");
-        mainServer.setPort(port.intValue());
+        return outLogPath;
     }
 }
 

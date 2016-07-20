@@ -30,9 +30,9 @@ public class MainTerminal {
     private String outLogPath;
 
     //--------------------------------------
-    public Document readXmlFile() {
+    public Document readXmlFile(String terminalFile) {
         //read xml file
-        File xmlFile = new File("terminal.xml");
+        File xmlFile = new File(terminalFile);
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = null;
         try {

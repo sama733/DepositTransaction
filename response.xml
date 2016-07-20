@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <response>
   <result>
-    <id>1</id>
+    <id>10</id>
     <responseType>SUCCESS</responseType>
-    <newBalance>4000</newBalance>
+    <newBalance>1200</newBalance>
     <description>Amaliat movafaghiat amiz bod!</description>
   </result>
   <result>
     <id>2</id>
-    <responseType>FAILD</responseType>
-    <newBalance>0</newBalance>
-    <description>mojodi kafi nis!</description>
-  </result>
-  <result>
-    <id>3</id>
     <responseType>SUCCESS</responseType>
-    <newBalance>300</newBalance>
+    <newBalance>1100</newBalance>
     <description>Amaliat movafaghiat amiz bod!</description>
   </result>
 </response>

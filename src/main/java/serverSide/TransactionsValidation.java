@@ -1,8 +1,6 @@
 package serverSide;
 
 
-import clientSide.MainTerminal;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,14 +26,14 @@ public class TransactionsValidation {
             BigDecimal sumDeposit = (deposit.getInitialBalance().add(transaction.getAmount()));
             if (sumDeposit.compareTo(deposit.getUpperBound()) < 0) {
                 deposit.doDepoit(transaction.getAmount());
-                response = new Response(transaction.getId(), ResponseType.SUCCESS, deposit.getInitialBalance(), "Amaliat movafaghiat amiz bod!"  );
+                response = new Response(transaction.getId(), ResponseType.SUCCESS, deposit.getInitialBalance(), "Amaliat movafaghiat amiz bod!");
             } else {
                 response = new Response(transaction.getId(), ResponseType.FAILD, deposit.getInitialBalance(), "bishtar az hade mojaz!");
                 System.out.println("bishtar az hade mojaz");
             }
         } else if (transaction.getType().equals("withdraw")) {
             BigDecimal munDeposit = (deposit.getInitialBalance().subtract(transaction.getAmount()));
-            if (munDeposit.compareTo(deposit.getUpperBound()) > 0) {
+            if (munDeposit.compareTo(deposit.getUpperBound()) < 0) {
                 deposit.doWithdrawl(transaction.getAmount());
                 response = new Response(transaction.getId(), ResponseType.SUCCESS, deposit.getInitialBalance(), "Amaliat movafaghiat amiz bod!");
             } else {
@@ -44,6 +42,7 @@ public class TransactionsValidation {
             }
         }
         return response;
+
     }
 }
 
