@@ -16,11 +16,7 @@ public class MainClients {
 
         Thread threadTerminal1 = new Thread(new MainThread("terminal.xml"));
         threadTerminal1.start();
-//        try {
-//            threadTerminal1.sleep(100);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+
         Thread threadTerminal2 = new Thread(new MainThread("terminal2.xml"));
         threadTerminal2.start();
     }

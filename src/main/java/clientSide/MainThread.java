@@ -9,6 +9,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.Socket;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MainThread implements Serializable, Runnable {
 
@@ -17,6 +19,7 @@ public class MainThread implements Serializable, Runnable {
     private Socket mainSocket;
     private MainTerminal mainTerminal = new MainTerminal();
     private List<Transaction> clientTransactions;
+    Logger clientLogger = Logger.getLogger(MainThread.class.getName());
 
     public MainThread(String xmlFilePathParameter) {
         this.xmlFilePath = xmlFilePathParameter;
@@ -40,16 +43,19 @@ public class MainThread implements Serializable, Runnable {
     }
 
     public  void sendRequest() {
-        System.out.println("send mainSocket.isClosed:" + mainSocket.isClosed());
-        System.out.println("send mainSocket.isConnected:" + mainSocket.isConnected());
+//        System.out.println("send mainSocket.isClosed:" + mainSocket.isClosed());
+//        System.out.println("send mainSocket.isConnected:" + mainSocket.isConnected());
+
         try {
             ObjectOutputStream dataOutputToServer = new ObjectOutputStream(mainSocket.getOutputStream());
             dataOutputToServer.writeObject(clientTransactions);
             dataOutputToServer.flush();
-            System.out.println("MainThread.SendRequest, is successful.");
+//            System.out.println("MainThread.SendRequest, is successful.");
+            clientLogger.log(Level.INFO," MainThread.SendRequest, is successful to : " + Thread.currentThread() + ".");
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("MainThread.SendRequest, is Failed.");
+//            System.err.println("MainThread.SendRequest, is Failed.");
+            clientLogger.log(Level.INFO," MainThread.SendRequest, is failed to : " + Thread.currentThread() + ".");
         }
     }
 
@@ -59,16 +65,20 @@ public class MainThread implements Serializable, Runnable {
             System.out.println("receive mainSocket.isConnected:" + mainSocket.isConnected());
             ObjectInputStream objectInputStreamFromServer = new ObjectInputStream(mainSocket.getInputStream());
             List<Response> clientResponse = (List<Response>) objectInputStreamFromServer.readObject();
-            System.out.println("get response from server");
+            clientLogger.log(Level.INFO," MainThread.getResponse, is successful from : " + Thread.currentThread() + ".");
+//            System.out.println("get response from server");
             System.out.println("Response" + clientResponse.toString());
             mainTerminal.seveToXml(clientResponse);
-            System.out.println("MainThread.getResponse, is successful.");
+//            System.out.println("MainThread.getResponse, is successful.");
+            clientLogger.log(Level.INFO," MainThread.getResponse, is successful from : " + Thread.currentThread() + ".");
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("MainThread.getResponse, is Falied.");
+//            System.out.println("MainThread.getResponse, is Falied.");
+            clientLogger.log(Level.INFO," MainThread.SendRequest, is failed : " + Thread.currentThread() + ".");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            System.out.println("MainThread.getResponse, is Falied.");
+//            System.out.println("MainThread.getResponse, is Falied.");
+            clientLogger.log(Level.INFO," MainThread.SendRequest, is failed : " + Thread.currentThread() + ".");
         }
     }
 
@@ -86,7 +96,7 @@ public class MainThread implements Serializable, Runnable {
         mainClient.initialize();
         mainClient.sendRequest();
         mainClient.getResponse();
-//        mainClient.closeConnection();
+        mainClient.closeConnection();
 
     }
 }

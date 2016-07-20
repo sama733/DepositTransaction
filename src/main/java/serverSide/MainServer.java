@@ -69,6 +69,7 @@ public class MainServer {
     public void Config() {
         MainJSonParser jSonParser = new MainJSonParser();
         jSonParser.jSonReader();
+        //deposits = jSonParser.getDeposits();
         outLog = jSonParser.getOutLogPath();
         port = jSonParser.getPort().intValue();
     }

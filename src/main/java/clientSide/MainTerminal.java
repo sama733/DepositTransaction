@@ -23,6 +23,7 @@ import java.util.List;
 
 public class MainTerminal {
 
+
     private int terminalId;
     private String terminalType;
     private String serverIp;
@@ -111,7 +112,7 @@ public class MainTerminal {
         XMLOutputter xmlOutput = new XMLOutputter();
         xmlOutput.setFormat(Format.getPrettyFormat());
         try {
-            xmlOutput.output(doc, new FileWriter("response.xml"));
+            xmlOutput.output(doc, new FileWriter("response.xml",true));
         } catch (IOException e) {
             e.printStackTrace();
         }
