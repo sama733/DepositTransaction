@@ -1,11 +1,13 @@
-package serverSide;
+package ir.dotin.school.core.server;
 
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
 
 public class Transaction implements Serializable {
+
+    private static final long serialVersionUID = 123894712L;
+
     private String id;
     private String type;
     private BigDecimal amount;

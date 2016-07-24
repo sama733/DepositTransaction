@@ -1,4 +1,4 @@
-package serverSide;
+package ir.dotin.school.core.server;
 
 import java.math.BigDecimal;
 
@@ -44,7 +44,7 @@ public class Deposit {
 
     public  void doDepoit(BigDecimal amount) {
         BigDecimal previousBalance = getInitialBalance();
-//        Thread.yield();
+        Thread.yield();
         setInitialBalance(amount.add(previousBalance));
     }
 

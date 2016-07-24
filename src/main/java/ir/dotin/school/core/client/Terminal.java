@@ -1,4 +1,4 @@
-package clientSide;
+package ir.dotin.school.core.client;
 
 import org.jdom.Element;
 import org.jdom.output.Format;
@@ -8,8 +8,8 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import serverSide.Response;
-import serverSide.Transaction;
+import ir.dotin.school.core.server.Response;
+import ir.dotin.school.core.server.Transaction;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,18 +21,16 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainTerminal {
-
-
-    private int terminalId;
-    private String terminalType;
-    private String serverIp;
-    private int serverPort;
+public class Terminal {
+    private int id;
+    private String type;
     private String outLogPath;
 
-    //--------------------------------------
+    private ServerInfo serverInfo;
+
+    private List<Transaction> transactions;
+
     public Document readXmlFile(String terminalFile) {
-        //read xml file
         File xmlFile = new File(terminalFile);
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = null;
@@ -52,25 +50,23 @@ public class MainTerminal {
         return null;
     }
 
-    //-------------------------------------------
-    //set information to fields and get transactions
-    public List<Transaction> setInformations(Document document) {
+    public void setInformations(Document document) {
 
-        List<Transaction> transactionList = new ArrayList<Transaction>();
-
+        transactions = new ArrayList<Transaction>();
 
         NodeList terminalList = document.getElementsByTagName("terminal");
         Node terminalNode = terminalList.item(0);
         NamedNodeMap terminalAttributes = terminalNode.getAttributes();
-        this.terminalId = (Integer.parseInt(terminalAttributes.getNamedItem("id").getTextContent()));
-        this.terminalType = (terminalAttributes.getNamedItem("type").getTextContent());
+        this.id = (Integer.parseInt(terminalAttributes.getNamedItem("id").getTextContent()));
+        this.type = (terminalAttributes.getNamedItem("type").getTextContent());
 
 
         NodeList serverList = document.getElementsByTagName("server");
         Node serverNode = serverList.item(0);
         NamedNodeMap serverAttributes = serverNode.getAttributes();
-        this.serverIp = (serverAttributes.getNamedItem("ip").getTextContent());
-        this.serverPort = (Integer.parseInt(serverAttributes.getNamedItem("port").getTextContent()));
+        String serverIp = serverAttributes.getNamedItem("ip").getTextContent();
+        int serverPort = Integer.parseInt(serverAttributes.getNamedItem("port").getTextContent());
+        serverInfo =  new ServerInfo(serverIp, serverPort);
 
 
         NodeList outLog = document.getElementsByTagName("outLog");
@@ -87,11 +83,8 @@ public class MainTerminal {
             transaction.setDepositNumber((node.getAttributes().getNamedItem("deposit").getTextContent()));
             transaction.setType(node.getAttributes().getNamedItem("type").getTextContent());
             transaction.setAmount(new BigDecimal(node.getAttributes().getNamedItem("amount").getTextContent()));
-            transactionList.add(transaction);
+            this.transactions.add(transaction);
         }
-
-        return transactionList;
-
     }
 
     public void seveToXml(List<Response> responses) {
@@ -119,20 +112,20 @@ public class MainTerminal {
         // System.out.println("save to xml :" + responses.toString());
     }
 
-    public int getTerminalId() {
-        return terminalId;
+    public int getId() {
+        return id;
     }
 
-    public String getTerminalType() {
-        return terminalType;
+    public String getType() {
+        return type;
     }
 
     public String getServerIp() {
-        return serverIp;
+        return serverInfo.ip;
     }
 
     public int getServerPort() {
-        return serverPort;
+        return serverInfo.port;
     }
 
     public String getOutLogPath() {
@@ -140,4 +133,11 @@ public class MainTerminal {
     }
 
 
+    public void readInformationFromFile(String xmlFilePath) {
+        setInformations(readXmlFile(xmlFilePath));
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
 }

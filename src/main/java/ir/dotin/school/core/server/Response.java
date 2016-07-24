@@ -1,4 +1,4 @@
-package serverSide;
+package ir.dotin.school.core.server;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

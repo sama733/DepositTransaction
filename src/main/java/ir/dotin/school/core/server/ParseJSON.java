@@ -1,4 +1,4 @@
-package serverSide;
+package ir.dotin.school.core.server;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -14,7 +14,7 @@ import java.util.Iterator;
 import java.util.List;
 
 
-public class MainJSonParser {
+public class ParseJSON {
 
     private final static String JSON_PATH = "core.json";
     public static JSONObject jsonObject;
@@ -22,8 +22,6 @@ public class MainJSonParser {
     private String outLogPath;
 
 
-
-    //parse kardane json
     public JSONObject jSonReader() {
 
         JSONParser jsonParser = new JSONParser();

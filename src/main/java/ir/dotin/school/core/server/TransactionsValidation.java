@@ -1,4 +1,4 @@
-package serverSide;
+package ir.dotin.school.core.server;
 
 
 import java.math.BigDecimal;
@@ -21,7 +21,8 @@ public class TransactionsValidation {
     }
 
     public Response doTransaction(Transaction transaction, Deposit deposit) {
-        synchronized (deposit) {
+        Thread.yield();
+//        synchronized (deposit) {
             Response response = null;
             if (transaction.getType().equals("deposit")) {
                 BigDecimal sumDeposit = (deposit.getInitialBalance().add(transaction.getAmount()));
@@ -45,6 +46,6 @@ public class TransactionsValidation {
             return response;
         }
 
-    }
+//    }
 }
 
